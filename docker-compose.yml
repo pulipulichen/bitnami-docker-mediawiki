@@ -12,8 +12,8 @@ services:
   mediawiki:
     image: docker.io/bitnami/mediawiki:1
     ports:
-      - '80:8080'
-      - '443:8443'
+      - '8080:8080'
+      - '8443:8443'
     environment:
       - MEDIAWIKI_DATABASE_HOST=mariadb
       - MEDIAWIKI_DATABASE_PORT_NUMBER=3306
@@ -21,6 +21,8 @@ services:
       - MEDIAWIKI_DATABASE_NAME=bitnami_mediawiki
       # ALLOW_EMPTY_PASSWORD is recommended only for development.
       - ALLOW_EMPTY_PASSWORD=yes
+      - MEDIAWIKI_EXTERNAL_HTTP_PORT_NUMBER=8080
+      - MEDIAWIKI_EXTERNAL_HTTPS_PORT_NUMBER=8443
     volumes:
       - 'mediawiki_data:/bitnami/mediawiki'
     depends_on:
